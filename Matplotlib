@@ -1,6 +1,6 @@
 import pandas as pd
 from scipy import stats
-import matplotlib.pyplot as dhruv
+import matplotlib.pyplot as lover
 a=pd.read_csv(r"C:\Users\HP\OneDrive\Desktop\code\pandas\Iris.csv")
 del a["Species"]
 del a["Id"]
