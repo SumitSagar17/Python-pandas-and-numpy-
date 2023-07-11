@@ -1,4 +1,4 @@
-import pandas as pd
+import pndas as pd
 a=pd.read_csv(r"C:\Users\HP\Downloads\Titanic-Dataset.csv")
 a.columns
 c=0
