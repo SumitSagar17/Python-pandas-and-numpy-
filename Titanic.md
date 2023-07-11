@@ -1,4 +1,3 @@
-Ques. #titanic 
 import pandas as pd
 a=pd.read_csv(r"C:\Users\HP\Downloads\Titanic-Dataset.csv")
 a.columns
@@ -18,4 +17,3 @@ print("NUMBER OF SURVIVALS IN 1ST CLASS:",pclass["Survived"].sum())
 print("NUMBER OF SURVIVALS IN 2ND CLASS:",pclass2["Survived"].sum())
 print("NUMBER OF SURVIVALS IN 3RD CLASS:",pclass3["Survived"].sum())
 
-Ques 
