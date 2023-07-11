@@ -1,0 +1,9 @@
+import pandas as pd
+a=pd.read_csv(r"C:\Users\HP\Downloads\Inc_Exp_Data.csv")
+print(a.drop_duplicates())
+a["monthly expenditure"].sort_values()
+for i in a.index:
+    if a.loc[i,"monthly expenditure"]>5000:
+        a.drop(i,inplace=True)
+print(a)
+a.corr()
