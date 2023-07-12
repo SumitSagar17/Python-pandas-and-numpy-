@@ -1,57 +1,56 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 from scipy import stats
-import matplotlib.pyplot as lover
-a=pd.read_csv(r"C:\Users\HP\OneDrive\Desktop\code\pandas\Iris.csv")
+a=pd.read_csv(r"C:\Users\SHIVAM KUMAR\Desktop\python2.csv")
+feature=["SepalLengthCm","SepalWidthCm","PetalLengthCm","PetalWidthCm"]
 del a["Species"]
 del a["Id"]
-feature=["SepalLengthCm","SepalWidthCm","PetalLengthCm","PetalWidthCm"]
 for i in feature:
     value=a[feature]
-    print("       ")
-    print("MEAN")
+    print(" ")
+    print("Mean")
     print(value.mean())
     break
 for j in feature:
     value=a[feature]
-    print("       ")
-    print("MEDIAN")
+    print(" ")
+    print("Median")
     print(value.median())
     break
 for k in feature:
     value=a[feature]
-    print("       ")
-    print("MODE")
+    print(" ")
+    print("Mode")
     print(value.mode())
     break
 for l in feature:
     value=a[feature]
-    print("       ")
+    print(" ")
     print("STANDARD DEVIATION")
     print(value.std())
     break
 for m in feature:
     value=a[feature]
-    print("       ")
+    print(" ")
     print("STANDARD ERROR")
-    print(stats.sem(value))
+    print((stats.sem(value)))
     break
-for m in feature:
+for n in feature:
     value=a[feature]
     mean=value.mean()
     std=value.std()
-    print("       ")
-    print("CONFIDENCE INTERVAL")
     n=len(value)
     confidence_level=0.95
-    alpha=1-confidence_level
+    aplha=1-confidence_level
     confidence_interval=stats.t.interval(confidence_level,df=n-1,loc=mean,scale=std/n**0.5)
+    print("CONFIDENCE INTERVAL")
     print(confidence_interval)
     break
 a.corr()
-dhruv.imshow(a.corr(),vmin=-1,vmax=1,cmap="autumn")
-dhruv.xticks(range(len(a.columns)),a.columns,rotation=30)
-dhruv.yticks(range(len(a.columns)),a.columns,rotation=30)
-dhruv.title("HEATMAP")
-print("COVARINCE: ",a["SepalLengthCm"].cov(a["PetalLengthCm"]))
-contingency_table=pd.crosstab(a["PetalLengthCm"],a["SepalLengthCm"])
+plt.imshow(a.corr(),vmin=-1,vmax=1)
+plt.xticks(range(len(a.columns)),a.columns,rotation=30)
+plt.yticks(range(len(a.columns)),a.columns,rotation=30)
+plt.title("Heatmap")
+print("Covarience",a["PetalLengthCm"].cov(a["SepalLengthCm"]))
+contingency_table= pd.crosstab(a["PetalLengthCm"],a["SepalLengthCm"])
 print(contingency_table)
