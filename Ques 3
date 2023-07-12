@@ -1,0 +1,64 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the Titanic dataset
+df = pd.read_csv(r"C:\Users\zimam\OneDrive\Desktop\Titanic-Dataset.csv")  # Replace 'titanic_dataset.csv' with the actual file path of your dataset
+
+# a. Bar chart to show the frequency of survivors and non-survivors for male and female passengers separately
+survivors = df[df['Survived'] == 1]
+non_survivors = df[df['Survived'] == 0]
+
+# Calculate the counts of survivors and non-survivors for male and female passengers
+male_survivors = survivors[survivors['Sex'] == 'male'].shape[0]
+male_non_survivors = non_survivors[non_survivors['Sex'] == 'male'].shape[0]
+female_survivors = survivors[survivors['Sex'] == 'female'].shape[0]
+female_non_survivors = non_survivors[non_survivors['Sex'] == 'female'].shape[0]
+
+# Create the bar chart
+labels = ['Male', 'Female']
+survivor_counts = [male_survivors, female_survivors]
+non_survivor_counts = [male_non_survivors, female_non_survivors]
+
+x = range(len(labels))
+width = 0.35
+
+fig, ax = plt.subplots()
+rects1 = ax.bar(x, survivor_counts, width, label='Survivors')
+rects2 = ax.bar(x, non_survivor_counts, width, bottom=survivor_counts, label='Non-Survivors')
+
+ax.set_xlabel('Gender')
+ax.set_ylabel('Frequency')
+ax.set_title('Survivors and Non-Survivors by Gender')
+ax.set_xticks(x)
+ax.set_xticklabels(labels)
+ax.legend()
+
+plt.show()
+
+# b. Scatter plot for any two selected features
+# Let's choose 'Age' and 'Fare' as the two features for the scatter plot
+plt.scatter(df['Age'], df['Fare'])
+plt.xlabel('Age')
+plt.ylabel('Fare')
+plt.title('Scatter Plot of Age vs Fare')
+plt.show()
+
+# c. Compare density distribution for features age and passenger fare
+# Create density plots for 'Age' and 'Fare'
+plt.figure(figsize=(10, 5))
+plt.hist(df['Age'], density=True, alpha=0.5, label='Age')
+plt.hist(df['Fare'], density=True, alpha=0.5, label='Fare')
+plt.xlabel('Value')
+plt.ylabel('Density')
+plt.title('Density Distribution of Age and Fare')
+plt.legend()
+plt.show()
+
+# d. Pair plot to show pairwise bivariate distribution
+# Create a pair plot using three selected features: 'Age', 'Fare', and 'Survived'
+plt.scatter(df['Age'], df['Fare'], c=df['Survived'])
+plt.xlabel('Age')
+plt.ylabel('Fare')
+plt.title('Pairwise Bivariate Distribution')
+plt.colorbar(label='Survived')
+plt.show()
